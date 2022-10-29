@@ -54,9 +54,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Product sellProduct(Long id, Product product) {
         ProductEntity productEntity = productRepository.findById(id).get();
-        productEntity.setQuantity(product.getQuantity());
-        productEntity.setName(product.getName());
-        productEntity.setPrice(product.getPrice());
+        productEntity.setQuantity(product.getQuantity() - 1);
 
         productRepository.save(productEntity);
         return product;
